@@ -35,7 +35,7 @@ if(!file.exists(paste("./data", PM25file, sep="/"))){unzip("./data/FNEI.zip", fi
 # read files
 #SCC  <- readRDS(paste("./data", SCCfile,  sep="/"))
 NEI  <- readRDS(paste("./data", PM25file, sep="/"))
-
+library(plyr)
 NEI.Balt <- NEI[NEI$fips=="24510",]
 em2.Balt <- ddply(NEI.Balt, .(year, type), summarise, TotalEmissions = sum(Emissions))
 

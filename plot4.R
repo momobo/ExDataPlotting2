@@ -37,7 +37,7 @@ NEI  <- readRDS(paste("./data", PM25file, sep="/"))
 SCC.Coal <- SCC[grep("[Cc]omb.*[cC]oal", SCC$Short.Name), ]
 # join (after the id, the reverse would be extremely inefficient)
 NEI.Coal <- merge(NEI,SCC.Coal)
-
+library(plyr)
 em.Coal <- ddply(NEI.Coal, .(year), summarise, TotalEmissions = sum(Emissions))
 
 # -- plotting 
